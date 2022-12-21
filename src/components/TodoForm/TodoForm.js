@@ -6,14 +6,18 @@ const TodoForm = ({ todoData, getFormData, markFunctionHandler }) => {
   const [todoform] = Form.useForm();
 
   const formSubmitHandler = (e) => {
-    let newItem = [...todoData];
-    newItem.push({
-      id: uuid().slice(0, 3),
-      checkItem: e.listitem,
-      checkStatus: "unchecked",
-    });
-    todoform.resetFields();
-    getFormData(newItem);
+    if(e.input !== " "){
+      let newItem = [...todoData];
+      newItem.push({
+        id: uuid().slice(0, 3),
+        checkItem: e.input,
+        checkStatus: "unchecked",
+      });
+      todoform.resetFields();
+      getFormData(newItem);
+      localStorage.setItem("todoData", JSON.stringify(newItem));
+    }
+    
   };
 
   return (
@@ -26,7 +30,17 @@ const TodoForm = ({ todoData, getFormData, markFunctionHandler }) => {
           console.log({ error });
         }}
       >
-        <Form.Item name="listitem">
+        <Form.Item
+          name="input"
+          
+          rules={[
+            {
+              required: true,
+              message:'Input Required',
+            
+            },
+          ]}
+        >
           <Input
             autoFocus
             size="large"

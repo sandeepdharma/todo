@@ -21,6 +21,19 @@ const TodoListItem = ({
       setChecked(false);
     }
     showClearButtonfunction(todoData);
+
+    let data = JSON.parse(localStorage.getItem("todoData"));
+    data.forEach((element) => {
+      if(element.id === listItemData.id){
+        if(e.target.checked){
+          element['checkStatus'] = 'checked'
+        }
+        else{
+          element['checkStatus'] = 'unchecked'
+        }
+      }
+    });
+    localStorage.setItem('todoData',JSON.stringify(data))
   };
 
   const checkstatus = () => {
@@ -63,7 +76,10 @@ const TodoListItem = ({
                 {listItemData.checkItem}
               </Title>
             ) : (
-              <TodoEdit listItemData={listItemData} setShowEditForm={setShowEditForm}/>
+              <TodoEdit
+                listItemData={listItemData}
+                setShowEditForm={setShowEditForm}
+              />
             )}
           </div>
           <div className="icon-container">

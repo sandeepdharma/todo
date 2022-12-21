@@ -2,7 +2,7 @@ import "./TodoEdit.scss";
 import { Form, Input } from "antd";
 const TodoEdit = ({ listItemData, setShowEditForm }) => {
   const formSubmitHandler = (e) => {
-    listItemData.checkItem = e.listitem;
+    listItemData.checkItem = e.input;
     setShowEditForm(false);
   };
 
@@ -15,7 +15,7 @@ const TodoEdit = ({ listItemData, setShowEditForm }) => {
           console.log({ error });
         }}
       >
-        <Form.Item name="listitem">
+        <Form.Item name="input">
           <Input autoFocus size="large" defaultValue={listItemData.checkItem} />
         </Form.Item>
       </Form>

@@ -3,9 +3,11 @@ import { useState } from "react";
 import TodoForm from "./components/TodoForm/TodoForm";
 import TodoList from "./components/TodoList/TodoList";
 import TodoActions from "./components/TodoActions/TodoActions";
-
+let data = JSON.parse(localStorage.getItem("todoData"));
 function App() {
-  const [todoData, setTodoData] = useState([]);
+  
+
+  const [todoData, setTodoData] = useState(data);
   const [filterData, setFilterData] = useState([]);
   const [showList, setShowList] = useState(false);
   const [showClearButton, setShowClearButton] = useState(false);
@@ -14,6 +16,7 @@ function App() {
 
   const getFormData = (data) => {
     setTodoData(data);
+    localStorage.setItem("todoData", JSON.stringify(data));
     setFilterData(data);
     if (data.length !== 0) {
       setShowList(true);
@@ -26,6 +29,7 @@ function App() {
     setFilterData(data);
   };
   const clearCompleted = () => {
+
     let data = todoData.filter(function (a) {
       return a.checkStatus === "unchecked";
     });
@@ -62,7 +66,6 @@ function App() {
     data.forEach((element) => {
       element.checkStatus = status;
     });
-    console.log("function exicuting");
     getFormData(data);
     setShowClearButton(!showClearButton);
     setMark(!mark);

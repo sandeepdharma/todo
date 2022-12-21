@@ -1,9 +1,10 @@
 .actions-container {
-    // width: 50%;
     display: flex;
     align-items: center;
-    
-    // margin: auto;
+
+    .actions-paragraph {
+        margin-left: 2%;
+    }
 
     .actions-buttons-container {
         margin-left: 10%;
@@ -12,4 +13,25 @@
         justify-content: space-evenly;
     }
 
+}
+
+@media only screen and (max-width: 700px) {
+    .actions-container {
+        display: flex;
+        flex-direction: column;
+
+        .actions-buttons-container {
+            margin: auto;
+            display: flex;
+        }
+
+        .ant-btn {
+            margin: 0% 2%;
+        }
+
+        .clear-button {
+            margin: 5%;
+        }
+
+    }
 }

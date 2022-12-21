@@ -12,7 +12,7 @@ const TodoList = ({
   const [updateState, setUpdateState] = useState(false);
   const deletelistItem = (e) => {
     let data = todoData
-    var filter = data.findIndex((element) => {
+    let filter = data.findIndex((element) => {
       return element.id === e.id;
     });
     if (filter !== -1) {
@@ -21,7 +21,7 @@ const TodoList = ({
     getFormData(data);
     setUpdateState(!updateState);
   };
-
+  // let data = JSON.parse(localStorage.getItem("todoData"));
   return (
     <div className="list">
       <List

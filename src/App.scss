@@ -1,6 +1,31 @@
-.main-container{
-   
+.main-container {
    width: 54%;
    margin: auto;
    margin-top: 7%;
+}
+
+// @media only screen and (max-width: 600px) {
+
+//    .main-container {
+//       width: 90%;
+//       margin: auto;
+//       margin-top: 2%;
+//    }
+// }
+
+// @media only screen and (max-width: 768px) {
+
+//    .main-container {
+//       width: 90%;
+//       margin: auto;
+//       margin-top: 2%;
+//    }
+// }
+
+@media only screen and (max-width: 1024px) {
+   .main-container {
+      width: 80%;
+      margin: auto;
+      margin-top: 2%;
+   }
 }

@@ -12,7 +12,6 @@ const TodoActions = ({
     const filteredData = data.filter(
       (element) => element.checkStatus === "checked"
     );
-    console.log(filteredData);
     getUpdatedData(filteredData);
   };
 
@@ -25,13 +24,12 @@ const TodoActions = ({
     const filteredData = data.filter(
       (element) => element.checkStatus === "unchecked"
     );
-    console.log(filteredData);
     getUpdatedData(filteredData);
   };
 
   return (
     <div className="actions-container">
-      <p>{itemsLeft} items left</p>
+      <p className="actions-paragraph">{itemsLeft} items left</p>
       <div className="actions-buttons-container">
       <Button onClick={showAllItems}>All</Button>
       <Button onClick={showUnchekedItemsOnly}>Active</Button>
@@ -39,7 +37,9 @@ const TodoActions = ({
       </div>
       <div className="actions-clear-button">
       {showClearButton === true ? (
+        <div className="clear-button">
         <Button onClick={clearCompleted}>Clear Completed</Button>
+        </div>
       ) : null}
       </div>
       
