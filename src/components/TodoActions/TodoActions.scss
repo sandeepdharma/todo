@@ -1,0 +1,15 @@
+.actions-container {
+    // width: 50%;
+    display: flex;
+    align-items: center;
+    
+    // margin: auto;
+
+    .actions-buttons-container {
+        margin-left: 10%;
+        width: 40%;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+}
