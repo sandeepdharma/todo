@@ -52,11 +52,17 @@ const TodoForm = ({
             placeholder="What needs to be done?"
             prefix={
               showList === true ? (
-                <DownOutlined
-                  className={iconBlur === true ? "iconVisible" : "iconDisible"}
-                  onClick={markFunctionHandler}
-                />
-              ) : null
+                <div className="empty-container">
+                  <DownOutlined
+                    className={
+                      iconBlur === true ? "iconVisible" : "iconDisible"
+                    }
+                    onClick={markFunctionHandler}
+                  />
+                </div>
+              ) : (
+                <div className="empty-container"></div>
+              )
             }
           />
         </Form.Item>

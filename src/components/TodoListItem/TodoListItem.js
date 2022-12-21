@@ -8,6 +8,7 @@ const TodoListItem = ({
   deletelistItem,
   showClearButtonfunction,
   todoData,
+  getFormData,
 }) => {
   const { Title } = Typography;
   const [showEditForm, setShowEditForm] = useState(false);
@@ -24,18 +25,19 @@ const TodoListItem = ({
 
     let data = JSON.parse(localStorage.getItem("todoData"));
     data.forEach((element) => {
-      if(element.id === listItemData.id){
-        if(e.target.checked){
-          element['checkStatus'] = 'checked'
-        }
-        else{
-          element['checkStatus'] = 'unchecked'
+      if (element.id === listItemData.id) {
+        if (e.target.checked) {
+          element["checkStatus"] = "checked";
+        } else {
+          element["checkStatus"] = "unchecked";
         }
       }
     });
-    localStorage.setItem('todoData',JSON.stringify(data))
+    localStorage.setItem("todoData", JSON.stringify(data));
   };
-
+  const editCheckItemHandler = () => {
+    setShowEditForm(!showEditForm);
+  };
   const checkstatus = () => {
     if (listItemData.checkStatus === "checked") {
       setChecked(true);
@@ -47,9 +49,6 @@ const TodoListItem = ({
   useEffect(() => {
     checkstatus();
   });
-  const editCheckItemHandler = (listItemData) => {
-    setShowEditForm(!showEditForm);
-  };
 
   return (
     <div>
@@ -77,6 +76,7 @@ const TodoListItem = ({
               </Title>
             ) : (
               <TodoEdit
+                getFormData={getFormData}
                 listItemData={listItemData}
                 setShowEditForm={setShowEditForm}
               />

@@ -1,9 +1,17 @@
 import "./TodoEdit.scss";
 import { Form, Input } from "antd";
-const TodoEdit = ({ listItemData, setShowEditForm }) => {
+let data = JSON.parse(localStorage.getItem("todoData"));
+
+const TodoEdit = ({ listItemData, setShowEditForm, getFormData }) => {
   const formSubmitHandler = (e) => {
-    listItemData.checkItem = e.input;
+    data.forEach((element) => {
+      if (element.id === listItemData.id) {
+        element.checkItem = e.input;
+      }
+    });
     setShowEditForm(false);
+    localStorage.setItem("todoData", JSON.stringify(data));
+    getFormData(data);
   };
 
   return (

@@ -14,11 +14,9 @@ const TodoActions = ({
     );
     getUpdatedData(filteredData);
   };
-
   const showAllItems = () => {
     getUpdatedData(todoData);
   };
-
   const showUnchekedItemsOnly = () => {
     let data = todoData;
     const filteredData = data.filter(
@@ -26,7 +24,7 @@ const TodoActions = ({
     );
     getUpdatedData(filteredData);
   };
-
+  
   return (
     <div className="actions-container">
       <p className="actions-paragraph">{itemsLeft} items left</p>

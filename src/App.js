@@ -11,7 +11,7 @@ function App() {
   const [showClearButton, setShowClearButton] = useState(false);
   const [itemsLeft, setItemsLeft] = useState(0);
   const [mark, setMark] = useState(false);
-  const [iconBlur,setIconBlur] = useState(false)
+  const [iconBlur, setIconBlur] = useState(false);
 
   const getFormData = (data) => {
     setTodoData(data);
@@ -64,14 +64,14 @@ function App() {
     getFormData(data);
     setShowClearButton(!showClearButton);
     setMark(!mark);
-    setIconBlur(!iconBlur)
+    setIconBlur(!iconBlur);
   };
 
   return (
     <div className="main-container">
       <TodoForm
-      iconBlur={iconBlur}
-      showList={showList}
+        iconBlur={iconBlur}
+        showList={showList}
         todoData={todoData}
         getFormData={getFormData}
         markFunctionHandler={markFunctionHandler}
