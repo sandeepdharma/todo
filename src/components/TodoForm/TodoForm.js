@@ -28,6 +28,7 @@ const TodoForm = ({
 
   return (
     <div>
+      <h1 className="title">todos</h1>
       <Form
         className="form"
         form={todoform}
