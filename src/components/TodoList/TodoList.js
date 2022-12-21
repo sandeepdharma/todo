@@ -9,7 +9,7 @@ const TodoList = ({
   getFormData,
   showClearButtonfunction,
 }) => {
-  const [state, setState] = useState(false);
+  const [updateState, setUpdateState] = useState(false);
   const deletelistItem = (e) => {
     let data = todoData
     var filter = data.findIndex((element) => {
@@ -19,8 +19,7 @@ const TodoList = ({
       data.splice(filter, 1);
     }
     getFormData(data);
-    setState(!state);
-    console.log('data :',data)
+    setUpdateState(!updateState);
   };
 
   return (

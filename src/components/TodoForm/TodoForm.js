@@ -1,10 +1,9 @@
 import "./TodoForm.scss";
 import { Form, Input } from "antd";
 import { v4 as uuid } from "uuid";
-import {DownOutlined} from '@ant-design/icons';
-const TodoForm = ({ todoData, getFormData,markFunctionHandler }) => {
+import { DownOutlined } from "@ant-design/icons";
+const TodoForm = ({ todoData, getFormData, markFunctionHandler }) => {
   const [todoform] = Form.useForm();
-
 
   const formSubmitHandler = (e) => {
     let newItem = [...todoData];
@@ -14,17 +13,13 @@ const TodoForm = ({ todoData, getFormData,markFunctionHandler }) => {
       checkStatus: "unchecked",
     });
     todoform.resetFields();
-
-
     getFormData(newItem);
   };
 
-
   return (
     <div>
-   
       <Form
-      className="form"
+        className="form"
         form={todoform}
         onFinish={(e) => formSubmitHandler(e)}
         onFinishFailed={(error) => {
@@ -32,10 +27,13 @@ const TodoForm = ({ todoData, getFormData,markFunctionHandler }) => {
         }}
       >
         <Form.Item name="listitem">
-          <Input 
-         size="large"
-          placeholder="What needs to be done?"
-          prefix={<DownOutlined className="icon" onClick={markFunctionHandler}/>}/>
+          <Input
+            size="large"
+            placeholder="What needs to be done?"
+            prefix={
+              <DownOutlined className="icon" onClick={markFunctionHandler} />
+            }
+          />
         </Form.Item>
       </Form>
     </div>
