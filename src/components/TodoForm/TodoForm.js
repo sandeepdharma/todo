@@ -2,11 +2,18 @@ import "./TodoForm.scss";
 import { Form, Input } from "antd";
 import { v4 as uuid } from "uuid";
 import { DownOutlined } from "@ant-design/icons";
-const TodoForm = ({ todoData, getFormData, markFunctionHandler }) => {
+
+const TodoForm = ({
+  todoData,
+  getFormData,
+  markFunctionHandler,
+  showList,
+  iconBlur,
+}) => {
   const [todoform] = Form.useForm();
 
   const formSubmitHandler = (e) => {
-    if(e.input !== " "){
+    if (e.input !== " ") {
       let newItem = [...todoData];
       newItem.push({
         id: uuid().slice(0, 3),
@@ -17,7 +24,6 @@ const TodoForm = ({ todoData, getFormData, markFunctionHandler }) => {
       getFormData(newItem);
       localStorage.setItem("todoData", JSON.stringify(newItem));
     }
-    
   };
 
   return (
@@ -32,21 +38,25 @@ const TodoForm = ({ todoData, getFormData, markFunctionHandler }) => {
       >
         <Form.Item
           name="input"
-          
           rules={[
             {
               required: true,
-              message:'Input Required',
-            
+              message: "Input Required",
             },
           ]}
         >
           <Input
+            className="form-input"
             autoFocus
             size="large"
             placeholder="What needs to be done?"
             prefix={
-              <DownOutlined className="icon" onClick={markFunctionHandler} />
+              showList === true ? (
+                <DownOutlined
+                  className={iconBlur === true ? "iconVisible" : "iconDisible"}
+                  onClick={markFunctionHandler}
+                />
+              ) : null
             }
           />
         </Form.Item>

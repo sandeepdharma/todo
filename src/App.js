@@ -5,14 +5,13 @@ import TodoList from "./components/TodoList/TodoList";
 import TodoActions from "./components/TodoActions/TodoActions";
 let data = JSON.parse(localStorage.getItem("todoData"));
 function App() {
-  
-
   const [todoData, setTodoData] = useState(data);
   const [filterData, setFilterData] = useState([]);
   const [showList, setShowList] = useState(false);
   const [showClearButton, setShowClearButton] = useState(false);
   const [itemsLeft, setItemsLeft] = useState(0);
   const [mark, setMark] = useState(false);
+  const [iconBlur,setIconBlur] = useState(false)
 
   const getFormData = (data) => {
     setTodoData(data);
@@ -23,19 +22,15 @@ function App() {
     } else {
       setShowList(false);
     }
-   
   };
   const getUpdatedData = (data) => {
     setFilterData(data);
   };
   const clearCompleted = () => {
-
     let data = todoData.filter(function (a) {
       return a.checkStatus === "unchecked";
     });
     getFormData(data);
-
-   
   };
   const showClearButtonfunction = (data) => {
     let checkedCount = 0;
@@ -69,11 +64,14 @@ function App() {
     getFormData(data);
     setShowClearButton(!showClearButton);
     setMark(!mark);
+    setIconBlur(!iconBlur)
   };
 
   return (
     <div className="main-container">
       <TodoForm
+      iconBlur={iconBlur}
+      showList={showList}
         todoData={todoData}
         getFormData={getFormData}
         markFunctionHandler={markFunctionHandler}

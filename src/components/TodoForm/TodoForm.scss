@@ -1,16 +1,23 @@
-.ant-input-affix-wrapper{
-    // height: 5em;
-    border-radius: 0%;
-    font-size: 35px;
-  
-    
+.ant-input-affix-wrapper {
+  border-radius: 0%;
+  font-size: 35px;
 }
 
-.ant-form-item{
-    margin: 0%;
+.form-input {
+  font-size: 35px;
+  border-radius: 0%;
 }
 
-  .icon{
-    font-size: 30px;
-    // border: 1px solid red;
-  }
+.ant-form-item {
+  margin: 0%;
+}
+
+.iconDisible {
+  font-size: 30px;
+  color:rgb(216, 187, 187);
+}
+
+.iconVisible {
+  font-size: 30px;
+  color: black;
+}
