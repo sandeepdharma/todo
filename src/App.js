@@ -20,7 +20,7 @@ function App() {
     } else {
       setShowList(false);
     }
-    console.log(data.length);
+   
   };
   const getUpdatedData = (data) => {
     setFilterData(data);
@@ -30,10 +30,8 @@ function App() {
       return a.checkStatus === "unchecked";
     });
     getFormData(data);
-    if (data.length !== 0) {
-      setShowList(true);
-    }
-    console.log(data.length);
+
+   
   };
   const showClearButtonfunction = (data) => {
     let checkedCount = 0;
@@ -47,13 +45,11 @@ function App() {
     } else {
       setShowClearButton(false);
     }
-    console.log("count:", checkedCount);
     let itemsReamin = data.length - checkedCount;
     setItemsLeft(itemsReamin);
     if (data.length !== 0) {
       setShowList(true);
     }
-    console.log(data.length);
   };
   const markFunctionHandler = () => {
     let status = "";

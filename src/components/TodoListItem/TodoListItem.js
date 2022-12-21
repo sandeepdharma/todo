@@ -2,6 +2,7 @@ import { Checkbox, Typography } from "antd";
 import "./TodoListItem.scss";
 import { useEffect, useState } from "react";
 import { CloseOutlined } from "@ant-design/icons";
+import TodoEdit from "../TodoEdit/TodoEdit";
 const TodoListItem = ({
   listItemData,
   deletelistItem,
@@ -9,7 +10,7 @@ const TodoListItem = ({
   todoData,
 }) => {
   const { Title } = Typography;
-
+  const [showEditForm, setShowEditForm] = useState(false);
   const [checked, setChecked] = useState(false);
   const onChangeCheck = (listItemData, e) => {
     if (e.target.checked) {
@@ -33,6 +34,9 @@ const TodoListItem = ({
   useEffect(() => {
     checkstatus();
   });
+  const editCheckItemHandler = (listItemData) => {
+    setShowEditForm(!showEditForm);
+  };
 
   return (
     <div>
@@ -43,8 +47,10 @@ const TodoListItem = ({
           onChangeCheck(listItemData, e);
         }}
       >
-        <div className="checkbox-inner-container"
-        onDoubleClick={()=>console.log('double clik happened')}>
+        <div
+          className="checkbox-inner-container"
+          onDoubleClick={editCheckItemHandler}
+        >
           <div
             className={
               listItemData.checkStatus === "checked"
@@ -52,9 +58,13 @@ const TodoListItem = ({
                 : "disableoverline"
             }
           >
-            <Title type="secondary" level={3} className="checkbox-label">
-              {listItemData.checkItem}
-            </Title>
+            {showEditForm === false ? (
+              <Title type="secondary" level={3} className="checkbox-label">
+                {listItemData.checkItem}
+              </Title>
+            ) : (
+              <TodoEdit listItemData={listItemData} setShowEditForm={setShowEditForm}/>
+            )}
           </div>
           <div className="icon-container">
             <CloseOutlined
