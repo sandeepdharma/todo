@@ -28,6 +28,7 @@ const TodoForm = ({ todoData, getFormData, markFunctionHandler }) => {
       >
         <Form.Item name="listitem">
           <Input
+            autoFocus
             size="large"
             placeholder="What needs to be done?"
             prefix={

@@ -43,7 +43,8 @@ const TodoListItem = ({
           onChangeCheck(listItemData, e);
         }}
       >
-        <div className="checkbox-inner-container">
+        <div className="checkbox-inner-container"
+        onDoubleClick={()=>console.log('double clik happened')}>
           <div
             className={
               listItemData.checkStatus === "checked"
