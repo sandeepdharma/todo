@@ -33,15 +33,15 @@ const TodoActions = () => {
           <div className="actions-container">
             <p className="actions-paragraph">{itemsLeft} items left</p>
             <div className="actions-buttons-container">
-              <Button onClick={() => showAllItems(todoData, getUpdatedData)}>
+              <Button type="text" className="btn-hover" onClick={() => showAllItems(todoData, getUpdatedData)}>
                 All
               </Button>
-              <Button
+              <Button type="text" className="btn-hover" 
                 onClick={() => showUnchekedItemsOnly(todoData, getUpdatedData)}
               >
                 Active
               </Button>
-              <Button
+              <Button type="text" className="btn-hover" 
                 onClick={() => showCheckedItemsOnly(todoData, getUpdatedData)}
               >
                 Completed
@@ -50,7 +50,7 @@ const TodoActions = () => {
             <div className="actions-clear-button">
               {showClearButton === true ? (
                 <div className="clear-button">
-                  <Button onClick={clearCompleted}>Clear Completed</Button>
+                  <Button className="btn-hover" type="" onClick={clearCompleted}>Clear Completed</Button>
                 </div>
               ) : null}
             </div>

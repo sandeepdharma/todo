@@ -1,7 +1,9 @@
 .actions-container {
     display: flex;
     align-items: center;
-    
+    .btn-hover:hover{
+        border: 1px solid rgba(124, 119, 119, 0.45);
+    }
 
     .actions-paragraph {
         margin-left: 2%;

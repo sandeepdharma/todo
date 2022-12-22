@@ -19,6 +19,9 @@
     border-radius: 50%;
     color: #af2f2f26;;
 }
+.ant-checkbox:hover{
+    border-radius: 50%;
+}
 
 .ant-checkbox-checked .ant-checkbox-inner {
     border-color: rgba(124, 119, 119, 0.45);
@@ -29,13 +32,8 @@
     border-radius: 50%;
     color: #af2f2f26;
 }
-
-.ant-checkbox-checked {
-    width: 25px;
-    height: 25px;
-    line-height: 25px;
-    border-radius: 50%;
-    color: red;
+.ant-checkbox-checked :hover{
+    border: none;
 }
 
 
