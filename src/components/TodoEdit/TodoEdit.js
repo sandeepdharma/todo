@@ -1,8 +1,9 @@
 import "./TodoEdit.scss";
 import { Form, Input } from "antd";
-const TodoEdit = ({ listItemData, setShowEditForm, getFormData }) => {
+import { MyContext } from "../../context";
+const TodoEdit = () => {
   let data = JSON.parse(localStorage.getItem("todoData"));
-  const formSubmitHandler = (e) => {
+  const formSubmitHandler = (e,getFormData,setShowEditForm,listItemData) => {
     data.forEach((element) => {
       if (element.id === listItemData.id) {
         element.checkItem = e.input;
@@ -14,17 +15,27 @@ const TodoEdit = ({ listItemData, setShowEditForm, getFormData }) => {
 
   return (
     <>
-      <Form
-        className="form"
-        onFinish={(e) => formSubmitHandler(e)}
-        onFinishFailed={(error) => {
-          console.log({ error });
+      <MyContext.Consumer>
+        {({ getFormData,listItemData,setShowEditForm }) => {
+          return (
+            <Form
+              className="form"
+              onFinish={(e) => formSubmitHandler(e,getFormData,setShowEditForm)}
+              onFinishFailed={(error) => {
+                console.log({ error });
+              }}
+            >
+              <Form.Item name="input">
+                <Input
+                  autoFocus
+                  size="large"
+                  defaultValue={listItemData.checkItem}
+                />
+              </Form.Item>
+            </Form>
+          );
         }}
-      >
-        <Form.Item name="input">
-          <Input autoFocus size="large" defaultValue={listItemData.checkItem} />
-        </Form.Item>
-      </Form>
+      </MyContext.Consumer>
     </>
   );
 };

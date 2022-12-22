@@ -2,15 +2,12 @@ import { List } from "antd";
 import { useState } from "react";
 import "./TodoList.scss";
 import TodoListItem from "../TodoListItem/TodoListItem";
+import { MyContext } from "../../context";
 
-const TodoList = ({
-  filterData,
-  todoData,
-  getFormData,
-  showClearButtonfunction,
-}) => {
+const TodoList = () => {
   const [updateState, setUpdateState] = useState(false);
-  const deletelistItem = (e) => {
+
+  const deletelistItem = (e, todoData, getFormData) => {
     let data = todoData;
     let filter = data.findIndex((element) => {
       return element.id === e.id;
@@ -21,25 +18,33 @@ const TodoList = ({
     getFormData(data);
     setUpdateState(!updateState);
   };
-  
+
   return (
-    <div className="list">
-      <List
-        itemLayout="horizontal"
-        dataSource={filterData}
-        renderItem={(item) => (
-          <List.Item key={item.id}>
-            <TodoListItem
-              getFormData={getFormData}
-              listItemData={item}
-              todoData={todoData}
-              deletelistItem={deletelistItem}
-              showClearButtonfunction={showClearButtonfunction}
+    <MyContext.Consumer>
+      {({ filterData, todoData, getFormData, showClearButtonfunction }) => {
+        return (
+          <div className="list">
+            <List
+              itemLayout="horizontal"
+              dataSource={filterData}
+              renderItem={(listItemData) => (
+                <List.Item key={listItemData.id}>
+                  <MyContext.Provider
+                    value={{ deletelistItem, getFormData, todoData }}
+                  >
+                    <TodoListItem
+                      listItemData={listItemData}
+                      todoData={todoData}
+                      showClearButtonfunction={showClearButtonfunction}
+                    />
+                  </MyContext.Provider>
+                </List.Item>
+              )}
             />
-          </List.Item>
-        )}
-      />
-    </div>
+          </div>
+        );
+      }}
+    </MyContext.Consumer>
   );
 };
 

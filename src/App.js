@@ -1,11 +1,11 @@
 import "./App.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TodoForm from "./components/TodoForm/TodoForm";
 import TodoList from "./components/TodoList/TodoList";
 import TodoActions from "./components/TodoActions/TodoActions";
-let data = JSON.parse(localStorage.getItem("todoData"));
+import { MyContext } from "./context.js";
 function App() {
-  const [todoData, setTodoData] = useState(data);
+  const [todoData, setTodoData] = useState();
   const [filterData, setFilterData] = useState([]);
   const [showList, setShowList] = useState(false);
   const [showClearButton, setShowClearButton] = useState(false);
@@ -33,18 +33,15 @@ function App() {
     getFormData(data);
   };
   const showClearButtonfunction = (data) => {
-    let checkedCount = 0;
-    data.forEach((element) => {
-      if (element.checkStatus === "checked") {
-        checkedCount++;
-      }
-    });
-    if (checkedCount > 0) {
+    var countfiltered = data.filter(function (element) {
+      return element.checkStatus === "checked";
+    }).length;
+    if (countfiltered > 0) {
       setShowClearButton(true);
     } else {
       setShowClearButton(false);
     }
-    let itemsReamin = data.length - checkedCount;
+    let itemsReamin = data.length - countfiltered;
     setItemsLeft(itemsReamin);
     if (data.length !== 0) {
       setShowList(true);
@@ -66,34 +63,42 @@ function App() {
     setMark(!mark);
     setIconBlur(!iconBlur);
   };
-
+  useEffect(() => {
+    let data = JSON.parse(localStorage.getItem("todoData"));
+    setTodoData(data);
+    setFilterData(data);
+    if (data.length > 0) {
+      setShowList(true);
+    }
+  }, []);
   return (
     <div className="main-container">
-      <TodoForm
-        iconBlur={iconBlur}
-        showList={showList}
-        todoData={todoData}
-        getFormData={getFormData}
-        markFunctionHandler={markFunctionHandler}
-      />
-      {showList === true ? (
-        <>
-          <TodoList
-            filterData={filterData}
-            todoData={todoData}
-            getFormData={getFormData}
-            showClearButtonfunction={showClearButtonfunction}
-          />
-          <TodoActions
-            todoData={todoData}
-            getUpdatedData={getUpdatedData}
-            filterData={filterData}
-            clearCompleted={clearCompleted}
-            showClearButton={showClearButton}
-            itemsLeft={itemsLeft}
-          />
-        </>
-      ) : null}
+      <h1 className="title">todos</h1>
+      <div className="main-inside-container">
+        <MyContext.Provider
+          value={{
+            iconBlur,
+            showList,
+            todoData,
+            getFormData,
+            markFunctionHandler,
+            filterData,
+            showClearButtonfunction,
+            getUpdatedData,
+            clearCompleted,
+            showClearButton,
+            itemsLeft,
+          }}
+        >
+          <TodoForm />
+          {showList === true ? (
+            <>
+              <TodoList />
+              <TodoActions />
+            </>
+          ) : null}
+        </MyContext.Provider>
+      </div>
     </div>
   );
 }

@@ -1,62 +1,87 @@
 .overlinestyle {
-    text-decoration: line-through;
-
+    text-decoration: underline;
+    text-underline-offset: -40%;
+    text-decoration-skip-ink: none;
+    text-decoration-color: rgba(124, 119, 119, 0.45);
+    ;
 }
 
 .disableoverline {
     text-decoration: none;
 }
-.ant-checkbox .ant-checkbox-inner{
-    // border: 1px solid red;
+
+.ant-checkbox .ant-checkbox-inner {
+    background-color: transparent;
+    border-color: rgba(124, 119, 119, 0.45);
     width: 25px;
     height: 25px;
     line-height: 25px;
     border-radius: 50%;
+    color: #af2f2f26;;
 }
 
-.ant-checkbox-checked{
-    // border: 1px solid red;
+.ant-checkbox-checked .ant-checkbox-inner {
+    border-color: rgba(124, 119, 119, 0.45);
+    background-color: #d6101026;
     width: 25px;
     height: 25px;
     line-height: 25px;
     border-radius: 50%;
+    color: #af2f2f26;
 }
-.ant-checkbox-checked{
+
+.ant-checkbox-checked {
     width: 25px;
     height: 25px;
     line-height: 25px;
     border-radius: 50%;
-    // border: 1px solid red;
+    color: red;
 }
+
 
 .checkbox-item {
+
+    text-align: center;
+    padding-left: 1%;
     width: 50vw;
     display: flex;
 
     .checkbox-inner-container {
+        padding-left: 1%;
+        text-align: center;
+
         .ant-typography {
             font-size: 30px;
             margin: 0%;
-            margin-bottom: 0%;
+            text-align: center;
+            padding-bottom: 4%;
         }
+
         width: 47vw;
         display: flex;
         justify-content: space-between;
 
-        .checkbox-label {
+        .checkbox-label-checked {
             width: 100%;
+            color: rgba(124, 119, 119, 0.45);
+            ;
         }
 
-        
+        .checkbox-label-unchecked {
+            width: 100%;
+            // color: rgba(124, 119, 119, 0.45);;
+        }
+
+
     }
 }
 
 
-.checkbox-item:hover .close-icon{
-   
+.checkbox-item:hover .close-icon {
+    margin-left: 5%;
     visibility: visible;
-    padding: 23%;
-    font-size: 1.5em;
+    font-size: 1.3em;
+    margin-top: 70%;
 }
 
 .icon-container {

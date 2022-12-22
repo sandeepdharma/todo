@@ -1,29 +1,19 @@
 .main-container {
    width: 54%;
    margin: auto;
-   margin-top: 1%;
-   
    
 }
-
-// @media only screen and (max-width: 600px) {
-
-//    .main-container {
-//       width: 90%;
-//       margin: auto;
-//       margin-top: 2%;
-//    }
-// }
-
-// @media only screen and (max-width: 768px) {
-
-//    .main-container {
-//       width: 90%;
-//       margin: auto;
-//       margin-top: 2%;
-//    }
-// }
-
+.main-inside-container{
+   box-shadow: 0 0 10px 1px;
+   color: rgb(204, 199, 199);
+}
+.title{
+   text-align: center;
+   font-size: 90px;
+   font-weight: 550;
+   color: #af2f2f26;
+   margin: 0%;
+ }
 @media only screen and (max-width: 1024px) {
    .main-container {
       width: 80%;
