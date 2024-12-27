@@ -14,6 +14,7 @@ function App() {
   const [iconBlur, setIconBlur] = useState(false);
 
   const getFormData = (data) => {
+    console.log(data);
     setTodoData(data);
     localStorage.setItem("todoData", JSON.stringify(data));
     setFilterData(data);
